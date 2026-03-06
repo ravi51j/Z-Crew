@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoho Books Training & Support | Z-Crew Technologies</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     CSS CUSTOM PROPERTIES
+  ============================================================ */
+  :root {
+    --ink:          #1a2340;
+    --paper:        #f4f6fa;
+    --accent:       #1e55d0;
+    --accent-dark:  #1648b8;
+    --accent-light: #e8eef9;
+    --accent-mid:   #3a7bd5;
+    --highlight:    #4a9fd4;
+    --mid:          #5a6580;
+    --light:        #dde3ef;
+    --white:        #ffffff;
+    --radius:       14px;
+    --shadow-sm:    0 2px 8px rgba(30,85,208,0.07);
+    --shadow-md:    0 8px 32px rgba(30,85,208,0.10);
+    --shadow-lg:    0 20px 60px rgba(30,85,208,0.13);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================================
+     NAV
+  ============================================================ */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 15px 56px;
+    background: rgba(255,255,255,0.93);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(30,85,208,0.08);
+  }
+  .nav-logo {
+    font-weight: 800; font-size: 1.05rem; color: var(--ink);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-badge {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.8px;
+    background: var(--accent-light); color: var(--accent);
+    padding: 3px 10px; border-radius: 20px; text-transform: uppercase;
+    border: 1px solid rgba(30,85,208,0.15);
+  }
+  .nav-btn {
+    background: var(--accent); color: #fff;
+    padding: 10px 24px; border-radius: 8px;
+    font-weight: 600; font-size: 0.84rem;
+    border: none; cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .nav-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(30,85,208,0.28);
+  }
+
+  /* ============================================================
+     HERO — FULL WIDTH, SPLIT LAYOUT
+  ============================================================ */
+  .hero {
+    min-height: 100vh;
+    padding-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle dot-grid background */
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background-image: radial-gradient(rgba(30,85,208,0.10) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  /* blue glow blob */
+  .hero::after {
+    content: '';
+    position: absolute; top: -120px; right: -120px; z-index: 0;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(30,85,208,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  /* ── LEFT copy ── */
+  .hero-copy {
+    position: relative; z-index: 1;
+    padding: 50px 60px 90px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--accent-light);
+    padding: 6px 14px; border-radius: 20px;
+    border: 1px solid rgba(30,85,208,0.18);
+    width: fit-content; margin-bottom: 26px;
+  }
+  .hero-pill::before {
+    content: '';
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:.4; transform:scale(1.3); }
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+    font-weight: 800; line-height: 1.08;
+    letter-spacing: -2px; color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .hero-title em { font-style: normal; color: var(--accent); }
+
+  .hero-desc {
+    font-size: 1.12rem; font-weight: 400; line-height: 1.8;
+    color: var(--mid); max-width: 500px; margin-bottom: 48px;
+  }
+
+  /* stat bar */
+  .stat-bar {
+    display: flex; gap: 0;
+    border: 1px solid var(--light); border-radius: 12px;
+    overflow: hidden; width: fit-content; background: var(--paper);
+  }
+  .stat {
+    padding: 15px 22px;
+    border-right: 1px solid var(--light);
+    display: flex; flex-direction: column;
+  }
+  .stat:last-child { border-right: none; }
+  .stat-n {
+    font-size: 1.45rem; font-weight: 800;
+    color: var(--accent); line-height: 1;
+  }
+  .stat-l { font-size: 0.68rem; font-weight: 500; color: var(--mid); margin-top: 3px; }
+
+  /* ── RIGHT — Forminator embed panel ── */
+  .hero-form-panel {
+    position: relative; z-index: 1;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px 72px 60px 48px;
+    overflow: hidden;
+  }
+
+  /* floating blob 1 */
+  .hero-form-panel::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 340px; height: 340px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,85,208,0.08) 0%, transparent 70%);
+    animation: floatA 7s ease-in-out infinite;
+    pointer-events: none; z-index: 0;
+  }
+  /* floating blob 2 */
+  .hero-form-panel::after {
+    content: '';
+    position: absolute; bottom: -100px; left: -60px;
+    width: 380px; height: 380px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,159,212,0.07) 0%, transparent 70%);
+    animation: floatB 9s ease-in-out infinite;
+    pointer-events: none; z-index: 0;
+  }
+  @keyframes floatA {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33%      { transform: translate(-18px,18px) scale(1.06); }
+    66%      { transform: translate(10px,-14px) scale(0.96); }
+  }
+  @keyframes floatB {
+    0%,100% { transform: translate(0,0) scale(1); }
+    40%      { transform: translate(16px,-20px) scale(1.05); }
+    70%      { transform: translate(-14px,12px) scale(0.95); }
+  }
+
+  .form-wrap {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 430px;
+    animation: fadeUp .65s cubic-bezier(.16,1,.3,1) both .15s;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* header above the form card */
+  .form-header {
+    margin-bottom: 18px;
+  }
+  .form-header-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--accent);
+    background: var(--white); padding: 5px 12px;
+    border-radius: 20px; margin-bottom: 10px;
+    border: 1px solid rgba(30,85,208,0.15);
+    box-shadow: var(--shadow-sm);
+  }
+  .form-header h2 {
+    font-size: 1.35rem; font-weight: 800;
+    color: var(--ink); line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .form-header p {
+    font-size: 0.85rem; color: var(--mid);
+    margin-top: 5px; line-height: 1.55;
+  }
+
+  /* the white card that wraps the Forminator shortcode */
+  .forminator-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 36px 36px 32px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(30,85,208,0.07);
+    position: relative;
+  }
+  /* top accent bar */
+  .forminator-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--highlight));
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  /* ── Override Forminator default styles to match our design ── */
+  .forminator-card .forminator-custom-form,
+  .forminator-card .forminator-ui {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+  }
+
+  /* Labels */
+  .forminator-card .forminator-label,
+  .forminator-card label {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+    margin-bottom: 6px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+  }
+
+  /* Inputs & Textareas */
+  .forminator-card input[type="text"],
+  .forminator-card input[type="email"],
+  .forminator-card input[type="tel"],
+  .forminator-card input[type="number"],
+  .forminator-card input[type="url"],
+  .forminator-card textarea,
+  .forminator-card select,
+  .forminator-card .forminator-input {
+    width: 100% !important;
+    padding: 11px 14px !important;
+    border: 1.5px solid var(--light) !important;
+    border-radius: 8px !important;
+    font-size: 0.9rem !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    color: var(--ink) !important;
+    background: var(--paper) !important;
+    box-shadow: none !important;
+    transition: border-color .2s, box-shadow .2s !important;
+    outline: none !important;
+    appearance: none !important;
+  }
+  .forminator-card input:focus,
+  .forminator-card textarea:focus,
+  .forminator-card select:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(30,85,208,0.1) !important;
+    background: #fff !important;
+  }
+  .forminator-card input::placeholder,
+  .forminator-card textarea::placeholder {
+    color: #a0a8c0 !important;
+  }
+
+  /* Row spacing */
+  .forminator-card .forminator-row,
+  .forminator-card .forminator-field-option {
+    margin-bottom: 14px !important;
+  }
+
+  /* Submit button */
+  .forminator-card button[type="submit"],
+  .forminator-card input[type="submit"],
+  .forminator-card .forminator-btn-submit,
+  .forminator-card .forminator-button {
+    width: 100% !important;
+    padding: 13px 20px !important;
+    background: var(--accent) !important;
+    background-image: none !important;
+    color: #fff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 0.93rem !important;
+    font-weight: 700 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+    transition: background .2s, transform .2s, box-shadow .2s !important;
+    letter-spacing: 0.2px !important;
+    margin-top: 4px !important;
+  }
+  .forminator-card button[type="submit"]:hover,
+  .forminator-card input[type="submit"]:hover,
+  .forminator-card .forminator-btn-submit:hover {
+    background: var(--accent-dark) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 22px rgba(30,85,208,0.28) !important;
+  }
+
+  /* Error messages */
+  .forminator-card .forminator-error-message,
+  .forminator-card .forminator-field--error .forminator-label {
+    color: #d93025 !important;
+    font-size: 0.75rem !important;
+  }
+  .forminator-card .forminator-field--error input,
+  .forminator-card .forminator-field--error textarea {
+    border-color: #d93025 !important;
+  }
+
+  /* Success message */
+  .forminator-card .forminator-response-output {
+    font-size: 0.88rem !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+  }
+
+  /* hide Forminator branding if any */
+  .forminator-card .forminator-powered-by { display: none !important; }
+
+  /* guarantee line below the card */
+  .form-guarantee {
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px; margin-top: 13px;
+    font-size: 0.72rem; color: var(--mid);
+  }
+  .form-guarantee svg { color: #22c55e; flex-shrink: 0; }
+
+
+
+  /* ============================================================
+     PARTNER STRIP
+  ============================================================ */
+  .partner-strip {
+    background: var(--ink);
+    padding: 28px 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+  }
+  .ps-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: rgba(255,255,255,0.35);
+    white-space: nowrap; margin-right: 36px;
+    padding-right: 36px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .ps-logos {
+    display: flex; align-items: center;
+    justify-content: center;
+    gap: 0; flex: 1;
+    flex-wrap: wrap;
+  }
+  .ps-logo {
+    font-weight: 600; font-size: 0.84rem;
+    color: rgba(255,255,255,0.55);
+    padding: 6px 28px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+  }
+  .ps-logo:last-child { border-right: none; }
+
+  /* ============================================================
+     SHARED SECTION STYLES
+  ============================================================ */
+  .sec { padding: 110px 80px; }
+
+  .sec-eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.4px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .sec-eyebrow::before {
+    content: ''; width: 20px; height: 2px;
+    background: var(--accent); border-radius: 2px;
+  }
+
+  .sec-title {
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+    font-weight: 800; letter-spacing: -1.2px;
+    color: var(--ink); line-height: 1.12;
+    margin-bottom: 16px; max-width: 660px;
+  }
+
+  .sec-sub {
+    font-size: 1.05rem; color: var(--mid);
+    max-width: 580px; line-height: 1.8;
+    margin-bottom: 60px;
+  }
+
+  /* ============================================================
+     BENEFIT CARDS
+  ============================================================ */
+  .benefits-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+  }
+  .bcard {
+    background: var(--white); border-radius: var(--radius);
+    padding: 36px 32px; border: 1px solid var(--light);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .bcard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(30,85,208,0.2);
+  }
+  .bcard-icon {
+    width: 52px; height: 52px; background: var(--accent-light);
+    border-radius: 12px; display: flex; align-items: center;
+    justify-content: center; font-size: 1.4rem; margin-bottom: 18px;
+  }
+  .bcard-title { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .bcard-desc { font-size: 0.92rem; color: var(--mid); line-height: 1.75; }
+
+  /* ============================================================
+     CURRICULUM (DARK SECTION)
+  ============================================================ */
+  .curriculum-sec {
+    background: var(--ink); padding: 110px 80px;
+    position: relative; overflow: hidden;
+  }
+  .curriculum-sec .sec-eyebrow { color: #7fb3f5; }
+  .curriculum-sec .sec-eyebrow::before { background: #7fb3f5; }
+  .curriculum-sec .sec-title { color: #fff; }
+  .curriculum-sec .sec-sub { color: rgba(255,255,255,.5); }
+
+  .curr-blob {
+    position: absolute; top: -100px; right: -100px;
+    width: 450px; height: 450px; pointer-events: none;
+    background: radial-gradient(circle, rgba(30,85,208,.18) 0%, transparent 70%);
+  }
+
+  .curr-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 72px;
+    align-items: center; position: relative; z-index: 1;
+  }
+
+  .curr-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 11px;
+  }
+  .curr-item {
+    display: flex; align-items: flex-start; gap: 11px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px; padding: 15px 16px;
+    transition: background .2s, border-color .2s;
+  }
+  .curr-item:hover {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(127,179,245,.3);
+  }
+  .curr-check {
+    width: 20px; height: 20px; flex-shrink: 0;
+    background: rgba(30,85,208,.35); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #7fb3f5; font-size: .6rem; font-weight: 700; margin-top: 1px;
+  }
+  .curr-name { font-size: .84rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+  .curr-sub { font-size: .72rem; color: rgba(255,255,255,.42); }
+
+  .curr-cta {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 12px 26px; border-radius: 8px;
+    font-weight: 700; font-size: .86rem; border: none; cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif; margin-top: 10px;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    text-decoration: none;
+  }
+  .curr-cta:hover {
+    background: var(--accent-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(30,85,208,.4);
+  }
+
+  /* ============================================================
+     PROCESS STEPS
+  ============================================================ */
+  .process-sec { padding: 110px 80px; background: var(--accent-light); }
+  .process-head { text-align: center; margin-bottom: 68px; }
+  .process-head .sec-eyebrow { justify-content: center; }
+  .process-head .sec-title { margin: 0 auto; text-align: center; max-width: 100%; }
+
+  .steps {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    position: relative; gap: 20px;
+  }
+  .steps::before {
+    content: '';
+    position: absolute; top: 30px; left: 13%; right: 13%; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--highlight));
+    opacity: .25; z-index: 0;
+  }
+  .step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+  .step-num {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--white); border: 2px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.05rem; font-weight: 800; color: var(--accent);
+    margin: 0 auto 22px;
+    box-shadow: 0 4px 14px rgba(30,85,208,.15);
+  }
+  .step-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 9px; }
+  .step-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.65; }
+
+  /* ============================================================
+     TESTIMONIALS
+  ============================================================ */
+  .testi-sec { padding: 110px 80px; background: var(--white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .tcard {
+    background: var(--paper); border-radius: var(--radius);
+    padding: 34px 30px; border: 1px solid var(--light);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .tcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .stars { color: #f0b429; font-size: .9rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .tquote { font-size: .94rem; line-height: 1.76; color: var(--mid); font-style: italic; margin-bottom: 20px; }
+  .tauthor { display: flex; align-items: center; gap: 12px; }
+  .tavatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--highlight));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: #fff; font-size: .8rem; flex-shrink: 0;
+  }
+  .tname { font-size: .88rem; font-weight: 700; color: var(--ink); }
+  .trole { font-size: .72rem; color: var(--mid); }
+
+  /* ============================================================
+     CTA BANNER
+  ============================================================ */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    padding: 90px 80px;
+    display: flex; align-items: center; justify-content: space-between; gap: 48px;
+  }
+  .cta-copy { flex: 1; }
+  .cta-title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800; color: #fff;
+    line-height: 1.15; letter-spacing: -.8px; margin-bottom: 10px;
+  }
+  .cta-sub { color: rgba(255,255,255,.75); font-size: 1.05rem; }
+  .cta-btn {
+    background: #fff; color: var(--accent);
+    padding: 17px 40px; border-radius: 10px;
+    font-weight: 800; font-size: .96rem;
+    text-decoration: none; white-space: nowrap; display: inline-block;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.18); }
+
+  /* ============================================================
+     FOOTER
+  ============================================================ */
+  footer {
+    background: var(--ink); padding: 32px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .foot-logo { font-weight: 800; color: rgba(255,255,255,.88); font-size: .92rem; }
+  .foot-logo span { color: #7fb3f5; }
+  .foot-txt { font-size: .74rem; color: rgba(255, 255, 255, 0.748); }
+
+  /* ============================================================
+     HERO ANIMATIONS
+  ============================================================ */
+  .hero-copy > * {
+    animation: fadeUp .6s cubic-bezier(.16,1,.3,1) both;
+  }
+  .hero-copy > *:nth-child(1) { animation-delay:.05s; }
+  .hero-copy > *:nth-child(2) { animation-delay:.12s; }
+  .hero-copy > *:nth-child(3) { animation-delay:.2s; }
+  .hero-copy > *:nth-child(4) { animation-delay:.28s; }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width:980px) {
+    .hero { grid-template-columns:1fr; }
+    .hero-copy { padding:52px 36px 36px; }
+    .hero-form-panel { padding:0 36px 64px; }
+    .sec, .curriculum-sec, .process-sec, .testi-sec { padding:72px 36px; }
+    .benefits-grid, .testi-grid { grid-template-columns:1fr; }
+    .curr-grid { grid-template-columns:1fr; }
+    .curr-inner { grid-template-columns:1fr; gap:44px; }
+    .steps { grid-template-columns:1fr 1fr; gap:32px; }
+    .steps::before { display:none; }
+    .cta-banner { flex-direction:column; text-align:center; padding:64px 36px; }
+    footer { flex-direction:column; text-align:center; padding:24px 36px; }
+    nav { padding:14px 24px; }
+    .partner-strip { padding:20px 24px; flex-wrap:wrap; gap:0; }
+    .ps-label { width:100%; margin-right:0; margin-bottom:14px; padding-right:0; border-right:none; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px; }
+    .ps-logos { gap: 0; }
+    .ps-logo { padding: 4px 16px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav>
+  <div class="nav-logo">
+    <a href="https://z-crewtech.com/">
+    <img src="https://z-crewtech.com/wp-content/uploads/2023/06/zoho_logo.svg"
+         alt="Z-Crew Tech Logo"
+         style="height:40px; width:auto;">
+    </a>
+    <span class="nav-badge">Zoho Partner</span>
+  </div>
+  <a class="nav-btn" href="#form-anchor">Get Free Training →</a>
+</nav>
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<section class="hero" id="form-anchor">
+
+  <!-- LEFT: headline + stats -->
+  <div class="hero-copy">
+    <div class="hero-pill">Zoho Authorized Partner · Dubai, UAE</div>
+    <h1 class="hero-title">
+      Take Control of Your <em>Business Finances</em></h1>
+    <p class="hero-desc">
+      Stop struggling with your accounting software. Our certified Zoho Books trainers get your team productive fast, so you can focus on growing your business.
+    </p>
+    <div class="stat-bar">
+      <div class="stat"><span class="stat-n">500+</span><span class="stat-l">Businesses Trained</span></div>
+      <div class="stat"><span class="stat-n">98%</span><span class="stat-l">Satisfaction Rate</span></div>
+      <div class="stat"><span class="stat-n">48hr</span><span class="stat-l">First Session Guarantee</span></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Forminator Form Panel -->
+  <div class="hero-form-panel">
+    <div class="form-wrap">
+
+      <!-- Header above card -->
+      <div class="form-header">
+        <span class="form-header-tag">🎯 Free Consultation</span>
+        <h2>Book Your Free Zoho Books consultation Session</h2>
+        <p>Our Zoho expert will contact you within 24 hours.</p>
+      </div>
+
+      <!-- White card wrapping the form -->
+      <div class="forminator-card">
+
+        [forminator_form id="4078"]
+
+      </div><!-- /.forminator-card -->
+
+      <div class="form-guarantee">
+        <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
+        No spam, ever. Your information is 100% secure.
+      </div>
+
+    </div><!-- /.form-wrap -->
+  </div><!-- /.hero-form-panel -->
+
+</section>
+
+<!-- ══════════════════════ PARTNER STRIP ══════════════════════ -->
+<div class="partner-strip">
+  <span class="ps-label">Authorized for</span>
+  <div class="ps-logos">
+    <span class="ps-logo">✦ Zoho Books</span>
+    <span class="ps-logo">✦ Zoho One</span>
+    <span class="ps-logo">✦ Zoho CRM</span>
+    <span class="ps-logo">✦ Zoho Inventory</span>
+    <span class="ps-logo">✦ Zoho Payroll</span>
+    <span class="ps-logo">✦ Zoho Analytics</span>
+  </div>
+</div>
+
+<!-- ══════════════════════ PROCESS ════════════════════════════ -->
+<section class="process-sec">
+  <div class="process-head">
+    <div class="sec-eyebrow">Our Process</div>
+    <h2 class="sec-title">From Sign-Up to Fully Operational in 4 Steps</h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">Free Consultation</div><p class="step-desc">We assess your needs, current setup, and training goals, no obligation.</p></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Custom Plan</div><p class="step-desc">A tailored training schedule specific to your industry and team size.</p></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Live Training</div><p class="step-desc">Interactive sessions with your real data. Online or in-person across UAE.</p></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">Ongoing Support</div><p class="step-desc">Documentation, dedicated account manager, and continued assistance.</p></div>
+  </div>
+</section>
+
+<!-- ══════════════════════ BENEFITS ══════════════════════════ -->
+<section class="sec" style="background:var(--paper);">
+  <div class="sec-eyebrow">Why Choose Us</div>
+  <h2 class="sec-title">Everything You Need to Succeed with Zoho Books</h2>
+  <p class="sec-sub">As an authorized Zoho partner in the UAE, we don't just teach features, we help you build processes that truly work for your business.</p>
+
+  <div class="benefits-grid">
+    <div class="bcard">
+      <div class="bcard-icon">🎓</div>
+      <div class="bcard-title">Certified Trainers</div>
+      <p class="bcard-desc">Active Zoho certifications. 500+ businesses trained across the UAE and Middle East. Real expertise, not guesswork.</p>
+    </div>
+    <div class="bcard">
+      <div class="bcard-icon">⚡</div>
+      <div class="bcard-title">Fast-Track Onboarding</div>
+      <p class="bcard-desc">Get your team productive in days, not months. Our curriculum is built for busy finance and accounting professionals.</p>
+    </div>
+    <div class="bcard">
+      <div class="bcard-icon">🛠️</div>
+      <div class="bcard-title">Hands-On Learning</div>
+      <p class="bcard-desc">Every session uses your actual business data so your team learns in context and actually retains what they're taught.</p>
+    </div>
+    <div class="bcard">
+      <div class="bcard-icon">🌍</div>
+      <div class="bcard-title">UAE Compliance Focus</div>
+      <p class="bcard-desc">VAT filing, FTA compliance, and UAE chart of accounts not generic setups that don't apply to your region.</p>
+    </div>
+    <div class="bcard">
+      <div class="bcard-icon">🔁</div>
+      <div class="bcard-title">Ongoing Support</div>
+      <p class="bcard-desc">Training doesn't end at the session. Continued access to our support team for questions, customizations, and updates.</p>
+    </div>
+    <div class="bcard">
+      <div class="bcard-icon">📊</div>
+      <div class="bcard-title">Custom Workflows</div>
+      <p class="bcard-desc">We map Zoho Books to your exact processes: invoicing, approval flows, reporting dashboards, and automations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CURRICULUM ════════════════════════ -->
+<section class="curriculum-sec">
+  <div class="curr-blob"></div>
+  <div class="curr-inner">
+    <div>
+      <div class="sec-eyebrow">Training Curriculum</div>
+      <h2 class="sec-title">Everything Covered, Nothing Left Out</h2>
+      <p class="sec-sub">From initial setup to advanced reporting and automation, fully tailored for UAE businesses.</p>
+      <a class="curr-cta" href="#form-anchor">Get Full Curriculum →</a>
+    </div>
+    <div class="curr-grid">
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">Chart of Accounts</div><div class="curr-sub">UAE-compliant structure</div></div></div>
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">Invoicing & Billing</div><div class="curr-sub">VAT invoices & recurring</div></div></div>
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">VAT & FTA Reports</div><div class="curr-sub">Accurate returns in minutes</div></div></div>
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">Bank Reconciliation</div><div class="curr-sub">Automated matching</div></div></div>
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">Inventory Management</div><div class="curr-sub">Stock, POs & vendors</div></div></div>
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">Financial Reporting</div><div class="curr-sub">P&L, balance sheet, cash flow</div></div></div>
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">Multi-Currency</div><div class="curr-sub">Global transactions</div></div></div>
+      <div class="curr-item"><div class="curr-check">✓</div><div><div class="curr-name">Automation & Workflows</div><div class="curr-sub">Rules, reminders & approvals</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="testi-sec">
+  <div class="sec-eyebrow">Client Stories</div>
+  <h2 class="sec-title">Trusted by Businesses Across the UAE</h2>
+  <p class="sec-sub">Here's what our clients say about training with Z-Crew Technologies.</p>
+
+  <div class="testi-grid">
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p class="tquote">"Z-Crew's training transformed how our finance team uses Zoho Books. We went from manual chaos to fully automated invoicing and VAT reports in under two weeks."</p>
+      <div class="tauthor"><div class="tavatar">AS</div><div><div class="tname">Ahmed S.</div><div class="trole">CFO · Trading Company, Dubai</div></div></div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p class="tquote">"The UAE VAT compliance training alone was worth every dirham. Our accountant used to spend days on FTA reports, now it takes 30 minutes."</p>
+      <div class="tauthor"><div class="tavatar">LM</div><div><div class="tname">Layla M.</div><div class="trole">Finance Manager · Logistics Firm, Sharjah</div></div></div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p class="tquote">"Professional, patient, and incredibly knowledgeable. They customized the training for our retail business and the post-training support was phenomenal."</p>
+      <div class="tauthor"><div class="tavatar">RK</div><div><div class="tname">Ravi K.</div><div class="trole">Owner · Retail Group, Abu Dhabi</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CTA BANNER ════════════════════════ -->
+<section class="cta-banner">
+  <div class="cta-copy">
+    <h2 class="cta-title">Ready to Unlock the Full Power of Zoho Books?</h2>
+    <p class="cta-sub">Join 500+ UAE businesses that have transformed their accounting with Z-Crew Technologies.</p>
+  </div>
+  <a class="cta-btn" href="#form-anchor">Book Free Session →</a>
+</section>
+
+<!-- ══════════════════════ FOOTER ════════════════════════════ -->
+<footer>
+  <div class="foot-logo">Z-CREW<span>TECH</span> · Zoho Authorized Partner UAE</div>
+  <div class="foot-txt">info@z-crewtech.com · +971 524520561</div>
