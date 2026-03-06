@@ -406,6 +406,31 @@
 
   .zcrew-privacy svg { width: 11px; height: 11px; flex-shrink: 0; }
 
+  /* ── HEADER CTA BUTTON ── */
+  .zcrew-header-cta {
+    background: var(--blue-primary);
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .zcrew-header-cta:hover {
+    background: var(--blue-mid);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(26,63,168,0.28);
+  }
+
+  @media (max-width: 600px) {
+    .zcrew-header-cta { display: none; }
+  }
+
   /* ── FOOTER ── */
   .zcrew-footer {
     background: var(--gray-bg);
@@ -469,6 +494,7 @@
       <span class="zcrew-dot"></span>
       Free Resource
     </div>
+    <a class="zcrew-header-cta" href="#zcrew-guide-form">Get Free Guide →</a>
   </header>
 
   <!-- HERO -->
@@ -532,7 +558,7 @@
       </div>
 
       <!-- RIGHT: Form Card -->
-      <div class="zcrew-form-card">
+      <div class="zcrew-form-card" id="zcrew-guide-form">
 
         <div class="zcrew-pdf-badge">
           <div class="zcrew-pdf-icon">
