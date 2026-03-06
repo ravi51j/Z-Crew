@@ -1,0 +1,574 @@
+
+</script>
+<!-- ✅ Make sure your page template is set to "Full Width" or "No Sidebar" -->
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue-primary: #1a3fa8;
+    --blue-mid: #2557d6;
+    --blue-bright: #3b7cff;
+    --blue-light: #e8f0fe;
+    --blue-xlight: #f0f5ff;
+    --gray-bg: #f8f9fc;
+    --gray-border: #e4e9f2;
+    --text-dark: #0d1b3e;
+    --text-muted: #5a6a8a;
+  }
+
+  .zcrew-lp * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .zcrew-lp {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #ffffff;
+    color: var(--text-dark);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  /* ── HEADER ── */
+  .zcrew-header {
+    background: #ffffff;
+    border-bottom: 1px solid var(--gray-border);
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .zcrew-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .zcrew-logo-icon {
+    width: 42px; height: 42px;
+    background: var(--blue-primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    color: white;
+    font-size: 15px;
+    letter-spacing: -1px;
+    flex-shrink: 0;
+  }
+
+  .zcrew-logo-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .zcrew-logo-sub {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .zcrew-header-badge {
+    background: var(--blue-xlight);
+    border: 1px solid #c7d9ff;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--blue-primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .zcrew-dot {
+    width: 6px; height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: zcrewPulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes zcrewPulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+  @media (max-width: 960px) {
+    .zcrew-header { padding: 14px 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .zcrew-header { padding: 12px 20px; }
+    .zcrew-logo-sub { display: none; }
+  }
+
+  /* ── HERO ── */
+  .zcrew-hero {
+    background: #ffffff;
+    padding: 80px 48px 90px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .zcrew-hero::before {
+    content: '';
+    position: absolute;
+    top: -130px; right: -130px;
+    width: 580px; height: 580px;
+    background: radial-gradient(circle, rgba(37,87,214,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .zcrew-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -90px; left: -90px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(26,63,168,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .zcrew-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 72px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* EYEBROW */
+  .zcrew-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-xlight);
+    border: 1px solid #c7d9ff;
+    border-radius: 20px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue-mid);
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .zcrew-eyebrow svg {
+    width: 13px; height: 13px;
+    flex-shrink: 0;
+  }
+
+  /* HEADING */
+  .zcrew-hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(32px, 3.8vw, 52px);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin-bottom: 22px;
+    letter-spacing: -1.5px;
+  }
+
+  .zcrew-hero h1 span { color: var(--blue-mid); }
+
+  .zcrew-desc {
+    color: var(--text-muted);
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+
+  /* BENEFITS */
+  .zcrew-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .zcrew-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+
+  .zcrew-check {
+    width: 23px; height: 23px;
+    background: var(--blue-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .zcrew-check svg { width: 11px; height: 11px; }
+
+  /* STATS */
+  .zcrew-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--gray-border);
+  }
+
+  .zcrew-stat-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--blue-primary);
+    line-height: 1;
+  }
+
+  .zcrew-stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 5px;
+    font-weight: 400;
+  }
+
+  /* ── FORM CARD ── */
+  .zcrew-form-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 20px 50px rgba(26,63,168,0.11);
+    border: 1px solid var(--gray-border);
+    position: relative;
+  }
+
+  .zcrew-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue-primary), var(--blue-bright));
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* PDF badge */
+  .zcrew-pdf-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue-xlight);
+    border: 1px solid #c7d9ff;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+  }
+
+  .zcrew-pdf-icon {
+    width: 36px; height: 36px;
+    background: var(--blue-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .zcrew-pdf-icon svg { width: 18px; height: 18px; color: white; }
+
+  .zcrew-pdf-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+
+  .zcrew-pdf-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .zcrew-form-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .zcrew-form-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  /* Forminator overrides — style the injected form */
+  .zcrew-form-card .forminator-ui,
+  .zcrew-form-card .forminator-custom-form {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+  }
+
+  .zcrew-form-card .forminator-input,
+  .zcrew-form-card .forminator-input-with-limit,
+  .zcrew-form-card input[type="text"],
+  .zcrew-form-card input[type="email"],
+  .zcrew-form-card input[type="tel"],
+  .zcrew-form-card input[type="number"],
+  .zcrew-form-card select,
+  .zcrew-form-card textarea {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    border: 1.5px solid var(--gray-border) !important;
+    border-radius: 10px !important;
+    background: var(--gray-bg) !important;
+    padding: 11px 14px !important;
+    font-size: 14px !important;
+    color: var(--text-dark) !important;
+    transition: all 0.2s !important;
+    width: 100% !important;
+    box-shadow: none !important;
+  }
+
+  .zcrew-form-card .forminator-input:focus,
+  .zcrew-form-card input:focus,
+  .zcrew-form-card select:focus,
+  .zcrew-form-card textarea:focus {
+    border-color: var(--blue-mid) !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(37,87,214,0.1) !important;
+    outline: none !important;
+  }
+
+  .zcrew-form-card .forminator-label,
+  .zcrew-form-card label {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--text-dark) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .zcrew-form-card .forminator-btn,
+  .zcrew-form-card button[type="submit"],
+  .zcrew-form-card input[type="submit"] {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    background: var(--blue-primary) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 14px 24px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    transition: all 0.25s !important;
+    box-shadow: none !important;
+    letter-spacing: 0.2px !important;
+  }
+
+  .zcrew-form-card .forminator-btn:hover,
+  .zcrew-form-card button[type="submit"]:hover,
+  .zcrew-form-card input[type="submit"]:hover {
+    background: var(--blue-mid) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(37,87,214,0.35) !important;
+  }
+
+  .zcrew-privacy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 14px;
+  }
+
+  .zcrew-privacy svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  .zcrew-footer {
+    background: var(--gray-bg);
+    border-top: 1px solid var(--gray-border);
+    text-align: center;
+    padding: 32px 40px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .zcrew-footer strong { color: var(--text-dark); }
+  .zcrew-footer a { color: var(--blue-primary); text-decoration: none; }
+  .zcrew-footer a:hover { text-decoration: underline; }
+  .zcrew-footer p + p { margin-top: 8px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .zcrew-hero-inner {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+    .zcrew-form-card {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .zcrew-hero {
+      padding: 56px 24px 64px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .zcrew-hero {
+      padding: 44px 20px 52px;
+    }
+    .zcrew-hero h1 {
+      letter-spacing: -0.5px;
+    }
+    .zcrew-stats {
+      gap: 24px;
+    }
+    .zcrew-footer {
+      padding: 28px 20px;
+    }
+  }
+</style>
+
+<div class="zcrew-lp">
+
+  <!-- HEADER -->
+  <header class="zcrew-header">
+    <a href="https://z-crewtech.com/" class="zcrew-logo-area">
+      <img src="https://z-crewtech.com/wp-content/uploads/2023/06/zoho_logo.svg" alt="Z-Crew Technologies" style="height: 40px; width: auto; display: block;">
+      <div style="width: 1px; height: 36px; background: var(--gray-border); margin: 0 16px; flex-shrink: 0;"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700; color: var(--text-dark); letter-spacing: -0.2px; line-height: 1;">Zoho Authorized Partner</span>
+        <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 11px; font-weight: 500; color: var(--blue-mid); letter-spacing: 1.2px; text-transform: uppercase; line-height: 1;">Dubai, UAE</span>
+      </div>
+    </a>
+    <div class="zcrew-header-badge">
+      <span class="zcrew-dot"></span>
+      Free Resource
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="zcrew-hero">
+    <div class="zcrew-hero-inner">
+
+      <!-- LEFT: Copy -->
+      <div>
+        <div class="zcrew-eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Save 10 Hours Every Week
+        </div>
+
+        <h1>One Zoho Books Setup That <span>Transforms</span> Your Accounting</h1>
+
+        <p class="zcrew-desc">
+          Still doing accounts manually? Discover the single Zoho Books configuration that saves businesses hours every single day and get it implemented in minutes.
+        </p>
+
+        <ul class="zcrew-benefits">
+          <li>
+            <div class="zcrew-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2557d6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Eliminate repetitive manual data entry forever
+          </li>
+          <li>
+            <div class="zcrew-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2557d6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Automate invoice creation, approvals &amp; reconciliation
+          </li>
+          <li>
+            <div class="zcrew-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2557d6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Get real-time financial visibility without extra effort
+          </li>
+          <li>
+            <div class="zcrew-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2557d6" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Step-by-step guide tailored for UAE businesses
+          </li>
+        </ul>
+
+        <div class="zcrew-stats">
+          <div>
+            <div class="zcrew-stat-num">10+</div>
+            <div class="zcrew-stat-label">Hours saved / week</div>
+          </div>
+          <div>
+            <div class="zcrew-stat-num">500+</div>
+            <div class="zcrew-stat-label">Businesses helped</div>
+          </div>
+          <div>
+            <div class="zcrew-stat-num">100%</div>
+            <div class="zcrew-stat-label">Free guide</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form Card -->
+      <div class="zcrew-form-card">
+
+        <div class="zcrew-pdf-badge">
+          <div class="zcrew-pdf-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div>
+            <div class="zcrew-pdf-title">Zoho Books Setup Guide</div>
+            <div class="zcrew-pdf-sub">PDF &middot; Instant Download &middot; Free</div>
+          </div>
+        </div>
+
+        <p class="zcrew-form-heading">Get Your Free Guide</p>
+        <p class="zcrew-form-sub">Enter your details below to download instantly</p>
+
+        <!-- Forminator Form -->
+        [forminator_form id="4145"]
+
+        <div class="zcrew-privacy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          Your information is 100% secure &amp; never shared
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="zcrew-footer">
+    <p>&copy; 2025 <strong>Z-Crew Technologies</strong> &middot; A division of Square International Group LLC</p>
+    <p>Tiffany Tower, Office 1408, Cluster W, JLT, Dubai, UAE &nbsp;&middot;&nbsp; <a href="/cdn-cgi/l/email-protection#8ae3e4ece5caf0a7e9f8effdfeefe9e2a4e9e5e7"><span class="__cf_email__" data-cfemail="573e393138172d7a342532202332343f7934383a">[email&#160;protected]</span></a> &nbsp;&middot;&nbsp; <a href="tel:+971524520561">+971 52 452 0561</a></p>
+    <p><a href="https://z-crewtech.com/privacy-policy/">Privacy
