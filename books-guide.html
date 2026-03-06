@@ -148,7 +148,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 460px;
+    grid-template-columns: 1fr 520px;
     gap: 72px;
     align-items: center;
     position: relative;
@@ -255,17 +255,26 @@
   .zcrew-form-card {
     background: #ffffff;
     border-radius: 20px;
-    padding: 36px 32px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 20px 50px rgba(26,63,168,0.11);
-    border: 1px solid var(--gray-border);
+    padding: 44px 40px;
+    box-shadow: 0 0 0 3px rgba(26,63,168,0.10), 0 24px 72px rgba(26,63,168,0.20);
+    border: 1.5px solid rgba(26,63,168,0.18);
     position: relative;
+    animation: zcrewFormGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes zcrewFormGlow {
+    0%,100% { box-shadow: 0 0 0 3px rgba(26,63,168,0.10), 0 24px 72px rgba(26,63,168,0.20); }
+    50%      { box-shadow: 0 0 0 6px rgba(26,63,168,0.18), 0 28px 80px rgba(26,63,168,0.28); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .zcrew-form-card { animation: none; }
   }
 
   .zcrew-form-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
+    height: 5px;
     background: linear-gradient(90deg, var(--blue-primary), var(--blue-bright));
     border-radius: 20px 20px 0 0;
   }
@@ -309,7 +318,7 @@
 
   .zcrew-form-heading {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 800;
     color: var(--text-dark);
     margin-bottom: 6px;
@@ -341,8 +350,8 @@
     border: 1.5px solid var(--gray-border) !important;
     border-radius: 10px !important;
     background: var(--gray-bg) !important;
-    padding: 11px 14px !important;
-    font-size: 14px !important;
+    padding: 14px 16px !important;
+    font-size: 15px !important;
     color: var(--text-dark) !important;
     transition: all 0.2s !important;
     width: 100% !important;
@@ -362,10 +371,10 @@
   .zcrew-form-card .forminator-label,
   .zcrew-form-card label {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 13px !important;
+    font-size: 14px !important;
     font-weight: 600 !important;
     color: var(--text-dark) !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 7px !important;
   }
 
   .zcrew-form-card .forminator-btn,
@@ -376,14 +385,14 @@
     color: #ffffff !important;
     border: none !important;
     border-radius: 12px !important;
-    padding: 14px 24px !important;
-    font-size: 16px !important;
+    padding: 17px 24px !important;
+    font-size: 17px !important;
     font-weight: 700 !important;
     width: 100% !important;
     cursor: pointer !important;
     transition: all 0.25s !important;
-    box-shadow: none !important;
-    letter-spacing: 0.2px !important;
+    box-shadow: 0 6px 22px rgba(26,63,168,0.30) !important;
+    letter-spacing: 0.3px !important;
   }
 
   .zcrew-form-card .forminator-btn:hover,
@@ -391,7 +400,7 @@
   .zcrew-form-card input[type="submit"]:hover {
     background: var(--blue-mid) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 24px rgba(37,87,214,0.35) !important;
+    box-shadow: 0 12px 30px rgba(37,87,214,0.40) !important;
   }
 
   .zcrew-privacy {
